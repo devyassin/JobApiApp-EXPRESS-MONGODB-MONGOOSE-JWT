@@ -4,7 +4,10 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "nodemon app.js"
+  },
+  "prettier": {
+    "printWidth": 80
   },
   "author": "",
   "license": "ISC",

@@ -18,10 +18,11 @@ const rateLimiter = require("express-rate-limit");
 
 const express = require("express");
 const app = express();
-const Jobs = require("./routes/jobs");
-const Auths = require("./routes/auth");
+const Stats = require("./routes/state");
+const Players = require("./routes/player");
+const Teams = require("./routes/team");
+
 const connect = require("./db/connect");
-const authentificationUser = require("./middleware/authentication");
 
 // error handler
 const notFoundMiddleware = require("./middleware/not-found");
@@ -41,10 +42,10 @@ app.use(xss());
 
 // routes
 
-app.use("/api/v1/jobs", authentificationUser, Jobs);
-app.use("/api/v1/jobs/:id", authentificationUser, Jobs);
-
-app.use("/api/v1/auth", Auths);
+app.use("/api/v1/stats", Stats);
+app.use("/api/v1/players", Players);
+app.use("/api/v1/teams", Teams)
+// app.use("/api/v1/jobs/:id", authentificationUser, Jobs);
 
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
